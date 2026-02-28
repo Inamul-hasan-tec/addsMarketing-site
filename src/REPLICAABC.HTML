@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky Scroll Feature - Production Template</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="sticky_scroll_styles.css" />
+
+    <style>
+      /* Optional: Additional header styles */
+      .header {
+        background: linear-gradient(135deg, #031432 0%, #1a3a52 100%);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .header h1 {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .header p {
+        font-size: 18px;
+        opacity: 0.9;
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <h1>One Window for All Things</h1>
+      <p>
+        Experience the ultimate sticky scroll feature with smooth animations
+      </p>
+    </div>
+
+    <!-- Main Section -->
+    <section class="perks_section">
+      <div class="perks_component">
+        <div class="perks_heading-wrapper">
+          <h2>Discover Our Features</h2>
+        </div>
+
+        <div class="perks_content-wrapper">
+          <!-- Left Column: Sticky Media Container -->
+          <div class="perks_media-container">
+            <!-- Feature 1: Control Kickstarter -->
+            <div class="perks_media-wrapper is-active" data-topic="kickstarter">
+              <img
+                src="https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1b9c3e2bed38d33eb_Frame%202087332585.webp"
+                alt="Control Kickstarter"
+                class="perks_image"
+              />
+            </div>
+
+            <!-- Feature 2: Continuous Monitoring -->
+            <div class="perks_media-wrapper" data-topic="monitoring">
+              <img
+                src="https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d18e598045cf7f37b0_Frame%202087332587-1.webp"
+                alt="Continuous Monitoring"
+                class="perks_image"
+              />
+            </div>
+
+            <!-- Feature 3: Compliance Dashboards -->
+            <div class="perks_media-wrapper" data-topic="dashboard">
+              <img
+                src="https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d0407e6298a46fa458_Frame%202087332587.webp"
+                alt="Compliance Dashboards"
+                class="perks_image"
+              />
+            </div>
+
+            <!-- Feature 4: Auditor Collaboration -->
+            <div class="perks_media-wrapper" data-topic="collaboration">
+              <img
+                src="https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68c004fa1185479cf5041d8a_Frame%202087332585.webp"
+                alt="Auditor Collaboration"
+                class="perks_image"
+              />
+            </div>
+
+            <!-- Feature 5: Expert Guidance -->
+            <div class="perks_media-wrapper" data-topic="guidance">
+              <img
+                src="https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1178c977f07e33c64_Frame%202087332587-2.webp"
+                alt="Expert Guidance"
+                class="perks_image"
+              />
+            </div>
+          </div>
+
+          <!-- Right Column: Scrolling Text Container -->
+          <div class="perks_text-container">
+            <!-- Feature 1: Control Kickstarter -->
+            <div class="perks_text-wrapper" data-topic="kickstarter">
+              <div class="text-size-regular is-sub-heading text-color-green">
+                Control Kickstarter
+              </div>
+              <h4 class="heading-style-h4">
+                Leverage a wide-array of pre-built templates for a headstart in
+                compliance
+              </h4>
+              <p
+                style="
+                  margin-top: 20px;
+                  color: var(--text-light);
+                  font-size: 16px;
+                  line-height: 1.8;
+                "
+              >
+                Get started quickly with our comprehensive library of
+                pre-configured templates designed by compliance experts. Save
+                months of planning and jump directly into implementation.
+              </p>
+            </div>
+
+            <!-- Feature 2: Continuous Monitoring -->
+            <div class="perks_text-wrapper" data-topic="monitoring">
+              <div
+                class="text-size-regular is-sub-heading text-color-navy-blue"
+              >
+                Continuous Monitoring
+              </div>
+              <h4 class="heading-style-h4">
+                Automate tests, evidence collection, and ongoing gap
+                remediation.
+              </h4>
+              <p
+                style="
+                  margin-top: 20px;
+                  color: var(--text-light);
+                  font-size: 16px;
+                  line-height: 1.8;
+                "
+              >
+                Never miss a compliance deadline. Our intelligent automation
+                continuously monitors your systems, collects evidence, and
+                alerts you to any gaps before they become issues.
+              </p>
+            </div>
+
+            <!-- Feature 3: Compliance Dashboards -->
+            <div class="perks_text-wrapper" data-topic="dashboard">
+              <div
+                class="text-size-regular is-sub-heading text-color-mustard-yellow"
+              >
+                Compliance Dashboards
+              </div>
+              <h4 class="heading-style-h4">
+                Gain an overarching and granular view of compliance progress at
+                all times.
+              </h4>
+              <p
+                style="
+                  margin-top: 20px;
+                  color: var(--text-light);
+                  font-size: 16px;
+                  line-height: 1.8;
+                "
+              >
+                Real-time dashboards give you complete visibility into your
+                compliance status. Track progress, identify bottlenecks, and
+                make data-driven decisions with confidence.
+              </p>
+            </div>
+
+            <!-- Feature 4: Auditor Collaboration -->
+            <div class="perks_text-wrapper" data-topic="collaboration">
+              <div class="text-size-regular is-sub-heading text-color-green">
+                Auditor Collaboration
+              </div>
+              <h4 class="heading-style-h4">
+                Create audit projects and share proof of compliance in a few
+                clicks.
+              </h4>
+              <p
+                style="
+                  margin-top: 20px;
+                  color: var(--text-light);
+                  font-size: 16px;
+                  line-height: 1.8;
+                "
+              >
+                Streamline your audit process. Collaborate seamlessly with
+                auditors, share evidence securely, and complete audits faster
+                than ever before.
+              </p>
+            </div>
+
+            <!-- Feature 5: Expert Guidance -->
+            <div class="perks_text-wrapper" data-topic="guidance">
+              <div
+                class="text-size-regular is-sub-heading text-color-navy-blue"
+              >
+                Expert Guidance
+              </div>
+              <h4 class="heading-style-h4">
+                Access 24/7 expert guidance from trusted ISO 27001 advisors
+              </h4>
+              <p
+                style="
+                  margin-top: 20px;
+                  color: var(--text-light);
+                  font-size: 16px;
+                  line-height: 1.8;
+                "
+              >
+                Our team of certified compliance experts is available around the
+                clock to answer your questions, provide guidance, and ensure
+                your success.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Link to external JavaScript -->
+    <script src="sticky_scroll_feature.js"></script>
+
+    <!-- Optional: Initialize with custom options -->
+    <script>
+      // You can customize the initialization here
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize with debug mode enabled (optional)
+        const stickyScroll = initializeStickyScroll({
+          debug: false, // Set to true to see console logs
+        });
+
+        // Listen for scroll changes (optional)
+        document.addEventListener("stickyScrollChange", (event) => {
+          console.log("Scroll changed to:", event.detail.topic);
+        });
+      });
+    </script>
+  </body>
+</html>
