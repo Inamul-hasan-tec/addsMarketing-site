@@ -56,7 +56,7 @@ export default function Header() {
             whileHover={{ scale: 1.02 }}
           >
             <img 
-              src="/src/assets/EMC Logo-01.png" 
+              src="/EMC Logo-01.png" 
               alt="EMC UAE" 
               className="h-10 w-auto"
             />

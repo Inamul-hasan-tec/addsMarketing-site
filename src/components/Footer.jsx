@@ -49,7 +49,7 @@ export default function Footer() {
               whileHover={{ scale: 1.02 }}
             >
               <img 
-                src="/src/assets/EMC Logo-01.png" 
+                src="/EMC Logo-01.png" 
                 alt="EMC UAE" 
                 className="h-12 w-auto brightness-0 invert"
               />
