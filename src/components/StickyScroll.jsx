@@ -126,11 +126,10 @@ export default function StickyScroll() {
             Our Services
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#031432] leading-tight">
-            Complete PCI DSS Services
+            Comprehensive PCI DSS Assessment, Attestation and Certification
           </h2>
           <p className="text-lg text-slate-600 mt-4 max-w-3xl mx-auto">
-            EMC UAE provides comprehensive PCI DSS services to help organizations securely handle
-            cardholder data, reduce risk, and meet global compliance requirements.
+            We deliver structured PCI DSS services tailored and customized for your business across UAE and Middle East that meets regulatory expectations and global security standards.
           </p>
         </motion.div>
 
@@ -210,7 +209,7 @@ export default function StickyScroll() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Book a Demo
+            Talk to Us
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </motion.a>
         </motion.div>

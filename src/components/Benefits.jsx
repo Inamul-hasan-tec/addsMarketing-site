@@ -11,33 +11,33 @@ import {
 const benefits = [
   {
     icon: AlertTriangle,
-    title: 'Reduce Compliance Risks',
-    description: 'Minimize the risk of non-compliance and potential security breaches.',
+    title: 'Reduce payment security risks',
+    description: 'Minimize the risk of payment data breaches and security vulnerabilities.',
     color: 'red',
   },
   {
-    icon: Lock,
-    title: 'Strengthen Cardholder Data Security',
-    description: 'Implement robust controls to protect sensitive payment information.',
-    color: 'indigo',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Avoid Costly Penalties',
-    description: 'Stay compliant and avoid fines from payment card brands and regulators.',
-    color: 'green',
-  },
-  {
     icon: Users,
-    title: 'Build Customer Trust',
-    description: 'Demonstrate your commitment to security and earn customer confidence.',
+    title: 'Strengthen customer trust',
+    description: 'Demonstrate your commitment to protecting customer payment information.',
     color: 'blue',
   },
   {
     icon: ClipboardCheck,
-    title: 'Stay Audit-Ready Year-Round',
-    description: 'Maintain continuous compliance and be prepared for any audit.',
+    title: 'Support merchant and bank requirements',
+    description: 'Meet the compliance requirements set by payment processors and financial institutions.',
     color: 'purple',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Avoid potential non-compliance penalties',
+    description: 'Stay compliant and avoid fines from payment card brands and regulators.',
+    color: 'green',
+  },
+  {
+    icon: Lock,
+    title: 'Improve overall security posture',
+    description: 'Strengthen your organization\'s security controls and risk management practices.',
+    color: 'indigo',
   },
 ];
 
@@ -85,8 +85,8 @@ export default function Benefits() {
             Benefits
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            What You Gain with{' '}
-            <span className="gradient-text">EMC UAE</span>
+            Benefits of{' '}
+            <span className="gradient-text">PCI DSS Certification</span>
           </h2>
           <p className="text-lg text-slate-600">
             Achieve PCI DSS compliance and unlock these valuable benefits for your organization.

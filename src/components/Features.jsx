@@ -10,26 +10,26 @@ import {
 const features = [
   {
     icon: Shield,
-    title: 'Certified PCI Experts',
-    description: 'Work with experienced professionals who understand PCI DSS requirements inside out.',
+    title: 'PCI QSA - Industry Experts',
+    description: 'Our team brings 20+ years of cybersecurity and compliance experience across the UAE and Middle East.',
     color: 'indigo',
   },
   {
     icon: Zap,
-    title: 'Faster Time to Compliance',
-    description: 'Our structured approach helps you reduce delays and achieve certification quickly.',
+    title: 'Structured Path to Certification',
+    description: 'Structured AI enabled methodology designed to help many clients achieve readiness in as fast as 2–4 weeks.',
     color: 'purple',
   },
   {
     icon: Users,
     title: 'End-to-End Support',
-    description: 'From gap assessment to final attestation — we handle the complete journey.',
+    description: 'From gap assessment to final attestation and certification, we support your complete PCI Certification journey.',
     color: 'blue',
   },
   {
     icon: Wrench,
-    title: 'Practical Implementation',
-    description: 'We focus on real security improvements, not just paperwork.',
+    title: 'Practical, Real World Approach',
+    description: 'We focus on implementable controls that stand up during real security scenarios. Helping you cope with security threats, attacks and breaches.',
     color: 'green',
   },
 ];
@@ -102,8 +102,8 @@ export default function Features() {
             Why Choose EMC UAE
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            Why UAE Businesses{' '}
-            <span className="gradient-text">Choose EMC UAE</span>
+            Why Choose EMC for{' '}
+            <span className="gradient-text">PCI DSS</span>
           </h2>
           <p className="text-lg text-slate-600">
             Partner with certified experts who deliver practical PCI DSS compliance 

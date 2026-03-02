@@ -4,20 +4,20 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'How long does PCI DSS certification take?',
-    answer: 'Most UAE organizations complete the process within a few weeks to a few months, depending on your current security posture and the scope of your cardholder data environment. Our structured approach helps accelerate the timeline.',
+    question: 'How long does PCI DSS readiness typically take?',
+    answer: 'Timelines vary based on your current environment. Most UAE organizations complete the process within a few weeks to a few months with structured support.',
   },
   {
-    question: 'Do you help with remediation?',
-    answer: 'Yes. Our team provides hands-on guidance to help you close compliance gaps quickly. We work alongside your team to implement the necessary controls and security measures required for PCI DSS compliance.',
+    question: 'Do you support remediation activities?',
+    answer: 'Yes. Our team provides guided remediation support to help close identified gaps quickly and efficiently.',
   },
   {
-    question: 'Who needs PCI DSS compliance?',
-    answer: 'Any business that stores, processes, or transmits cardholder data must comply with PCI DSS. This includes merchants, payment processors, financial institutions, and service providers handling payment card information.',
+    question: 'Which UAE businesses typically require PCI DSS?',
+    answer: 'Any organization that stores, processes, or transmits cardholder data — (e.g. eCommerce, fintech, retail, payment providers etc.)',
   },
   {
-    question: 'Do you support UAE businesses?',
-    answer: 'Yes, we primarily serve organizations across the UAE. Our team understands the local business environment and regulatory landscape, providing tailored PCI DSS compliance solutions for UAE companies.',
+    question: 'Do you support companies across the UAE?',
+    answer: 'Yes, we have a strong client base in the UAE. We serve organizations across the UAE and Middle East.',
   },
 ];
 

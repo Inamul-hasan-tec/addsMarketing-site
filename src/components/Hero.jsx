@@ -68,21 +68,8 @@ export default function Hero() {
               transition={{ delay: 0.3 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
             >
-              Get{' '}
-              <span className="gradient-text">PCI DSS Certified</span>
-              {' '}Faster in the{' '}
-              <span className="relative">
-                <span className="relative z-10">UAE</span>
-                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 12" fill="none">
-                  <path d="M2 10C20 4 50 2 98 10" stroke="url(#gradient)" strokeWidth="4" strokeLinecap="round"/>
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#26A8E0" />
-                      <stop offset="100%" stopColor="#1E8FC2" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </span>
+              <span className="gradient-text">PCI DSS Certification UAE</span>
+              {' '}- Fast & Secure
             </motion.h1>
 
             {/* Subheadline */}
@@ -92,7 +79,7 @@ export default function Hero() {
               transition={{ delay: 0.4 }}
               className="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              EMC UAE helps you achieve PCI DSS compliance quickly with expert assessment, 
+              EMC helps you achieve PCI DSS compliance quickly with expert assessment, 
               gap analysis, and complete end-to-end support.
             </motion.p>
 
@@ -109,7 +96,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Book a Demo
+                Get Support
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.a>
             </motion.div>
@@ -229,7 +216,7 @@ export default function Hero() {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
-                  Schedule your free demo
+                  Submit Query
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </form>

@@ -10,29 +10,29 @@ const steps = [
   {
     number: 1,
     icon: Plug,
-    title: 'Gap Assessment',
-    description: 'We identify compliance gaps in your current environment and provide a clear roadmap.',
+    title: 'Discovery & Gap Assessment',
+    description: 'We evaluate your cardholder data environment and identify compliance gaps in your current environment.',
     color: '#26A8E0',
   },
   {
     number: 2,
     icon: Cpu,
-    title: 'Remediation Support',
-    description: "Our experts guide your team to close security gaps quickly with hands-on support.",
+    title: 'Guided Remediation',
+    description: "Our experts work closely with your team to address and close security and control gaps.",
     color: '#26A8E0',
   },
   {
     number: 3,
     icon: FileText,
-    title: 'Final Assessment',
-    description: 'We perform the official PCI DSS evaluation to verify all requirements are met.',
+    title: 'Formal PCI QSA Assessment',
+    description: 'We conduct the formal PCI DSS QSA evaluation and assessment.',
     color: '#26A8E0',
   },
   {
     number: 4,
     icon: ShieldCheck,
-    title: 'Attestation',
-    description: 'You receive your PCI DSS compliance certification, proving your commitment to security.',
+    title: 'Attestation Support',
+    description: 'You receive your PCI DSS Attestation & Certification and guidance for ongoing compliance.',
     color: '#00D084',
   },
 ];
@@ -49,10 +49,10 @@ export default function StepsProcess() {
           className="mb-16 lg:mb-24"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#031432] leading-tight">
-            Getting started with
+            Our AI enabled
             <br />
             <span className="relative inline-block">
-              EMC UAE is easy
+              PCI DSS Engagement Model
               <svg
                 className="absolute -bottom-2 left-0 w-full"
                 viewBox="0 0 200 8"

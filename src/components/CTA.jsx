@@ -94,13 +94,13 @@ export default function CTA() {
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-3xl mx-auto">
-              Ready to Get{' '}
-              <span className="text-indigo-200">PCI DSS Certified?</span>
+              Start Your{' '}
+              <span className="text-indigo-200">PCI DSS Journey Here</span>
             </h2>
 
             {/* Subheadline */}
             <p className="text-lg lg:text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
-              Speak with EMC UAE experts and accelerate your compliance journey today.
+              Book a consultation with our compliance specialists and understand your next steps toward PCI DSS certification.
             </p>
 
             {/* CTA Button */}
@@ -110,7 +110,7 @@ export default function CTA() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Book a Demo
+              Book Consultation
               <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </div>
