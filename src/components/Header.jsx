@@ -6,22 +6,21 @@ import { cn } from '../lib/utils';
 const navItems = [
   {
     label: 'Services',
-    children: [
-      { label: 'PCI DSS Gap Assessment', description: 'Identify compliance gaps', icon: Shield, href: '#' },
-      { label: 'Readiness Assessment', description: 'Prepare for certification', icon: FileCheck, href: '#' },
-      { label: 'Remediation Guidance', description: 'Close security gaps quickly', icon: BarChart3, href: '#' },
-      { label: 'SAQ & ROC Support', description: 'Documentation assistance', icon: Award, href: '#' },
-    ],
+    href: '#services',
   },
   {
     label: 'Why EMC UAE',
-    href: '#',
+    href: '#why-emc',
   },
   {
     label: 'Process',
-    href: '#',
+    href: '#process',
   },
-  { label: 'FAQ', href: '#' },
+  {
+    label: 'Benefits',
+    href: '#benefits',
+  },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -65,77 +64,23 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
-              <div
+              <a
                 key={item.label}
-                className="relative"
-                onMouseEnter={() => item.children && setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                href={item.href}
+                className={cn(
+                  'px-4 py-2 text-sm font-medium rounded-lg transition-colors',
+                  'text-slate-700 hover:text-[#26A8E0] hover:bg-[#26A8E0]/5'
+                )}
               >
-                <button
-                  className={cn(
-                    'flex items-center space-x-1 px-4 py-2 text-sm font-medium rounded-lg transition-colors',
-                    'text-slate-700 hover:text-[#26A8E0] hover:bg-[#26A8E0]/5'
-                  )}
-                >
-                  <span>{item.label}</span>
-                  {item.children && (
-                    <ChevronDown
-                      className={cn(
-                        'w-4 h-4 transition-transform duration-200',
-                        activeDropdown === item.label && 'rotate-180'
-                      )}
-                    />
-                  )}
-                </button>
-
-                {/* Dropdown Menu */}
-                <AnimatePresence>
-                  {item.children && activeDropdown === item.label && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden"
-                    >
-                      <div className="p-2">
-                        {item.children.map((child) => (
-                          <a
-                            key={child.label}
-                            href={child.href}
-                            className="flex items-start space-x-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
-                          >
-                            <div className="w-10 h-10 rounded-lg bg-[#26A8E0]/10 flex items-center justify-center group-hover:bg-[#26A8E0]/20 transition-colors">
-                              <child.icon className="w-5 h-5 text-[#26A8E0]" />
-                            </div>
-                            <div>
-                              <div className="font-medium text-slate-900 group-hover:text-[#26A8E0] transition-colors">
-                                {child.label}
-                              </div>
-                              <div className="text-sm text-slate-500">
-                                {child.description}
-                              </div>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                {item.label}
+              </a>
             ))}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <a
-              href="#"
-              className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-[#26A8E0] transition-colors"
-            >
-              Login
-            </a>
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center">
             <motion.a
-              href="#"
+              href="#contact"
               className="px-5 py-2.5 text-sm font-semibold text-white gradient-bg rounded-full hover:shadow-lg hover:shadow-[#26A8E0]/25 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -170,23 +115,19 @@ export default function Header() {
                 {navItems.map((item) => (
                   <div key={item.label}>
                     <a
-                      href={item.href || '#'}
-                      className="block px-4 py-2 text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                      href={item.href}
+                      className="block px-4 py-2 text-base font-medium text-slate-700 hover:text-[#26A8E0] hover:bg-[#26A8E0]/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
                     </a>
                   </div>
                 ))}
-                <div className="pt-4 px-4 space-y-2">
+                <div className="pt-4 px-4">
                   <a
-                    href="#"
-                    className="block w-full text-center px-4 py-2 text-sm font-medium text-slate-700 border border-slate-200 rounded-full hover:bg-slate-50 transition-colors"
-                  >
-                    Login
-                  </a>
-                  <a
-                    href="#"
+                    href="#contact"
                     className="block w-full text-center px-4 py-2.5 text-sm font-semibold text-white gradient-bg rounded-full"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Book a Demo
                   </a>

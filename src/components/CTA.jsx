@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Shield } from 'lucide-react';
 
 export default function CTA() {
   return (
@@ -11,62 +11,13 @@ export default function CTA() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Don't Delay Section */}
+        {/* Start Your Journey Here Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative bg-gradient-to-br from-red-600 via-red-700 to-orange-700 rounded-3xl p-8 lg:p-12 overflow-hidden mb-16"
-        >
-          {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
-
-          <div className="relative text-center">
-            {/* Icon */}
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mb-6"
-            >
-              <AlertTriangle className="w-8 h-8 text-white" />
-            </motion.div>
-
-            {/* Headline */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 max-w-3xl mx-auto">
-              Don't Delay Your PCI DSS Compliance
-            </h2>
-
-            {/* Subheadline */}
-            <p className="text-lg text-red-100 mb-8 max-w-2xl mx-auto">
-              Non-compliance can lead to penalties, security risks, and lost customer trust. 
-              Start your PCI DSS journey with EMC UAE today.
-            </p>
-
-            {/* CTA Button */}
-            <motion.a
-              href="#final-cta"
-              className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-red-700 bg-white rounded-full hover:bg-red-50 hover:shadow-xl transition-all"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Book a Demo
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-          </div>
-        </motion.div>
-
-        {/* Final CTA Section */}
-        <motion.div
-          id="final-cta"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-700 rounded-3xl p-8 lg:p-16 overflow-hidden"
+          className="relative bg-gradient-to-br from-[#26A8E0] via-[#1E8FC2] to-[#1677A8] rounded-3xl p-8 lg:p-16 overflow-hidden"
         >
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -94,19 +45,18 @@ export default function CTA() {
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-3xl mx-auto">
-              Start Your{' '}
-              <span className="text-indigo-200">PCI DSS Journey Here</span>
+              Start Your PCI DSS Journey Here
             </h2>
 
             {/* Subheadline */}
-            <p className="text-lg lg:text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg lg:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
               Book a consultation with our compliance specialists and understand your next steps toward PCI DSS certification.
             </p>
 
             {/* CTA Button */}
             <motion.a
               href="#"
-              className="group inline-flex items-center justify-center px-10 py-5 text-lg font-semibold text-indigo-700 bg-white rounded-full hover:bg-indigo-50 hover:shadow-xl transition-all"
+              className="group inline-flex items-center justify-center px-10 py-5 text-lg font-semibold text-[#26A8E0] bg-white rounded-full hover:bg-gray-50 hover:shadow-xl transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

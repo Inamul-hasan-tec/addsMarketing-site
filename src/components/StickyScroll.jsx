@@ -20,48 +20,51 @@ import { ArrowRight } from 'lucide-react';
 const topics = [
   {
     id: 'gap-assessment',
-    label: 'Gap Assessment',
+    label: 'PCI DSS Gap Assessment',
     labelColor: 'green',
-    title: 'Identify compliance gaps in your current environment and get a clear roadmap to PCI DSS certification',
-    description: 'Our comprehensive gap assessment evaluates your current security posture against all PCI DSS requirements. We identify areas that need attention and provide a prioritized action plan.',
-    // Replace with your custom image: '/images/pci-gap-assessment.webp'
+    title: 'Identify compliance gaps in your current environment',
+    description: 'We evaluate your cardholder data environment and identify compliance gaps against PCI DSS requirements.',
     image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1b9c3e2bed38d33eb_Frame%202087332585.webp',
   },
   {
-    id: 'readiness-assessment',
-    label: 'Readiness Assessment',
+    id: 'gap-remediation',
+    label: 'Gap Remediation Support',
     labelColor: 'blue',
-    title: 'Evaluate your preparedness for certification with a thorough pre-audit evaluation',
-    description: 'Before the official audit, we conduct a thorough readiness assessment to ensure you are fully prepared. This pre-audit evaluation helps identify any remaining issues that could impact certification.',
-    // Replace with your custom image: '/images/pci-readiness-assessment.webp'
-    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d18e598045cf7f37b0_Frame%202087332587-1.webp',
-  },
-  {
-    id: 'remediation-guidance',
-    label: 'Remediation Guidance',
-    labelColor: 'yellow',
-    title: 'Expert support to close security gaps quickly with hands-on implementation guidance',
-    description: 'Our team provides hands-on guidance to help you implement the necessary controls and fixes. We work alongside your team to ensure remediation efforts are effective and efficient.',
-    // Replace with your custom image: '/images/pci-remediation-guidance.webp'
+    title: 'Expert guidance to close security and control gaps',
+    description: 'Our team provides hands-on support to help you address and close identified security and control gaps efficiently.',
     image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d0407e6298a46fa458_Frame%202087332587.webp',
   },
   {
-    id: 'saq-roc-support',
-    label: 'SAQ & ROC Support',
+    id: 'readiness-support',
+    label: 'PCI DSS Readiness Support',
+    labelColor: 'yellow',
+    title: 'Comprehensive readiness assessment and preparation',
+    description: 'We ensure your organization is fully prepared for PCI DSS certification with thorough readiness evaluation and support.',
+    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d18e598045cf7f37b0_Frame%202087332587-1.webp',
+  },
+  {
+    id: 'saq-support',
+    label: 'PCI DSS SAQ Support',
     labelColor: 'green',
-    title: 'Complete documentation and reporting assistance for SAQ and ROC requirements',
-    description: 'Whether you need a Self-Assessment Questionnaire (SAQ) or a Report on Compliance (ROC), our experts guide you through the entire documentation process to ensure accuracy and completeness.',
-    // Replace with your custom image: '/images/pci-saq-roc-support.webp'
+    title: 'Self-Assessment Questionnaire (SAQ) guidance',
+    description: 'Complete support for PCI DSS Self-Assessment Questionnaire completion and validation.',
     image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68c004fa1185479cf5041d8a_Frame%202087332585.webp',
   },
   {
-    id: 'continuous-advisory',
-    label: 'Continuous Advisory',
+    id: 'aoc',
+    label: 'PCI DSS AoC',
     labelColor: 'blue',
-    title: 'Stay compliant year-round with ongoing support and continuous monitoring',
-    description: 'PCI DSS compliance is not a one-time event. Our continuous advisory services help you maintain compliance, adapt to requirement changes, and stay audit-ready throughout the year.',
-    // Replace with your custom image: '/images/pci-continuous-advisory.webp'
+    title: 'Attestation of Compliance (AoC) support',
+    description: 'Expert assistance in obtaining your PCI DSS Attestation of Compliance documentation.',
     image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1178c977f07e33c64_Frame%202087332587-2.webp',
+  },
+  {
+    id: 'roc',
+    label: 'PCI DSS RoC',
+    labelColor: 'yellow',
+    title: 'Report on Compliance (RoC) preparation',
+    description: 'Comprehensive support for PCI DSS Report on Compliance preparation and submission.',
+    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1b9c3e2bed38d33eb_Frame%202087332585.webp',
   },
 ];
 
@@ -112,7 +115,7 @@ export default function StickyScroll() {
   }, []);
 
   return (
-    <section className="perks_section py-16 lg:py-24 bg-white">
+    <section id="services" className="perks_section py-16 lg:py-24 bg-white">
       <div className="perks_component max-w-[1400px] mx-auto px-5">
         {/* Section Header */}
         <motion.div

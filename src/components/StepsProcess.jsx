@@ -39,15 +39,18 @@ const steps = [
 
 export default function StepsProcess() {
   return (
-    <section className="py-20 lg:py-32 bg-white overflow-hidden">
+    <section id="process" className="py-20 lg:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 lg:mb-24"
+          className="mb-16 lg:mb-24 text-center"
         >
+          <span className="inline-block px-4 py-1.5 bg-[#26A8E0]/10 text-[#26A8E0] text-sm font-semibold rounded-full mb-4">
+            Our Process
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#031432] leading-tight">
             Our AI enabled
             <br />
@@ -155,18 +158,23 @@ export default function StepsProcess() {
                   </div>
                 )}
 
-                {/* Step Number & Title */}
+                {/* Step Number */}
                 <div className="mb-3">
                   <span 
                     className="text-sm font-bold uppercase tracking-wider"
                     style={{ color: step.color }}
                   >
-                    Step {step.number}
+                    STEP {step.number}
                   </span>
                 </div>
 
+                {/* Step Title */}
+                <h3 className="text-xl lg:text-2xl font-bold text-[#031432] mb-4 leading-tight">
+                  {step.title}
+                </h3>
+
                 {/* Step Description */}
-                <p className="text-[#031432] font-medium leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>
