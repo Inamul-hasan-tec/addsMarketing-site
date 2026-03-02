@@ -9,7 +9,7 @@ const navItems = [
     href: '#services',
   },
   {
-    label: 'Why EMC UAE',
+    label: 'Why EMC',
     href: '#why-emc',
   },
   {
