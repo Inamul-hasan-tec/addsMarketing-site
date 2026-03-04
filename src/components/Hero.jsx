@@ -1,18 +1,78 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Shield, CheckCircle2, Users, Clock } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Shield, CheckCircle2, Users, Clock, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
-export default function Hero() {
+const countryCodes = [
+  { code: '+971', country: 'UAE', flag: '🇦🇪' },
+  { code: '+1', country: 'USA', flag: '🇺🇸' },
+  { code: '+44', country: 'UK', flag: '🇬🇧' },
+  { code: '+91', country: 'India', flag: '🇮🇳' },
+  { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
+  { code: '+974', country: 'Qatar', flag: '🇶🇦' },
+  { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
+  { code: '+968', country: 'Oman', flag: '🇴🇲' },
+  { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
+];
+
+export default function Hero({ onBookDemo }) {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    countryCode: '+971',
     phone: '',
     companyName: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      // TODO: Configure EmailJS credentials before enabling
+      // Uncomment and add your credentials from https://www.emailjs.com/
+      /*
+      emailjs.init('YOUR_PUBLIC_KEY');
+
+      const templateParams = {
+        to_email: 'sabirpatna@gmail.com',
+        from_name: formData.fullName,
+        from_email: formData.email,
+        phone: `${formData.countryCode} ${formData.phone}`,
+        company: formData.companyName,
+        message: `New inquiry from ${formData.fullName} at ${formData.companyName}`,
+      };
+
+      await emailjs.send(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
+        templateParams
+      );
+      */
+
+      // Temporary: Just log the form data
+      console.log('Form submitted:', formData);
+
+      setShowSuccess(true);
+      setFormData({
+        fullName: '',
+        email: '',
+        countryCode: '+971',
+        phone: '',
+        companyName: '',
+      });
+
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Failed to send request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -57,7 +117,7 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#26A8E0]"></span>
               </span>
               <span className="text-sm font-medium text-[#26A8E0]">
-                UAE's Trusted PCI DSS Partner
+                Trusted PCI DSS Partner
               </span>
             </motion.div>
 
@@ -90,15 +150,15 @@ export default function Hero() {
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8"
             >
-              <motion.a
-                href="#contact"
+              <motion.button
+                onClick={onBookDemo}
                 className="group w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white gradient-bg rounded-full hover:shadow-xl hover:shadow-[#26A8E0]/25 transition-all"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Get Support
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+              </motion.button>
             </motion.div>
 
             {/* Trust Indicators */}
@@ -131,6 +191,34 @@ export default function Hero() {
             className="relative"
           >
             <div className="relative bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden p-8">
+              {/* Success Message Overlay */}
+              <AnimatePresence>
+                {showSuccess && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a] to-[#1e40af] rounded-2xl flex items-center justify-center z-10 p-8"
+                  >
+                    <div className="text-center">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                        className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-6"
+                      >
+                        <CheckCircle2 className="w-12 h-12 text-white" />
+                      </motion.div>
+                      <h3 className="text-2xl font-bold text-white mb-3">
+                        Thank You!
+                      </h3>
+                      <p className="text-white/90 text-lg">
+                        Thank you for submitting your request. Our Team will contact you shortly.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               {/* Form Header */}
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#26A8E0]/10 mb-4">
@@ -182,16 +270,30 @@ export default function Hero() {
                   <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">
                     Phone Number
                   </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#26A8E0] focus:ring-2 focus:ring-[#26A8E0]/20 transition-all outline-none"
-                    placeholder="Enter your phone number"
-                    required
-                  />
+                  <div className="flex gap-2">
+                    <select
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={handleChange}
+                      className="px-3 py-3 rounded-xl border border-slate-200 focus:border-[#26A8E0] focus:ring-2 focus:ring-[#26A8E0]/20 transition-all outline-none bg-white"
+                    >
+                      {countryCodes.map((country) => (
+                        <option key={country.code} value={country.code}>
+                          {country.flag} {country.code}
+                        </option>
+                      ))}
+                    </select>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="flex-1 px-4 py-3 rounded-xl border border-slate-200 focus:border-[#26A8E0] focus:ring-2 focus:ring-[#26A8E0]/20 transition-all outline-none"
+                      placeholder="Enter phone number"
+                      required
+                    />
+                  </div>
                 </div>
 
                 <div>
@@ -212,12 +314,22 @@ export default function Hero() {
 
                 <motion.button
                   type="submit"
-                  className="w-full py-4 px-6 text-base font-semibold text-white gradient-bg rounded-xl hover:shadow-xl hover:shadow-[#26A8E0]/25 transition-all flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
+                  disabled={isSubmitting}
+                  className="w-full py-4 px-6 text-base font-semibold text-white gradient-bg rounded-xl hover:shadow-xl hover:shadow-[#26A8E0]/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.99 }}
                 >
-                  Submit Query
-                  <ArrowRight className="w-5 h-5" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      Submit Query
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
                 </motion.button>
               </form>
 

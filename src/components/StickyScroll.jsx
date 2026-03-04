@@ -24,7 +24,7 @@ const topics = [
     labelColor: 'green',
     title: 'Identify compliance gaps in your current environment',
     description: 'We evaluate your cardholder data environment and identify compliance gaps against PCI DSS requirements.',
-    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1b9c3e2bed38d33eb_Frame%202087332585.webp',
+    image: '/PCI DSS Gap Assessment-new.png',
   },
   {
     id: 'gap-remediation',
@@ -32,7 +32,7 @@ const topics = [
     labelColor: 'blue',
     title: 'Expert guidance to close security and control gaps',
     description: 'Our team provides hands-on support to help you address and close identified security and control gaps efficiently.',
-    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d0407e6298a46fa458_Frame%202087332587.webp',
+    image: '/Gap Remediation Support-new.png',
   },
   {
     id: 'readiness-support',
@@ -40,7 +40,7 @@ const topics = [
     labelColor: 'yellow',
     title: 'Comprehensive readiness assessment and preparation',
     description: 'We ensure your organization is fully prepared for PCI DSS certification with thorough readiness evaluation and support.',
-    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d18e598045cf7f37b0_Frame%202087332587-1.webp',
+    image: '/PCI DSS Readiness Support-new.png',
   },
   {
     id: 'saq-support',
@@ -48,7 +48,7 @@ const topics = [
     labelColor: 'green',
     title: 'Self-Assessment Questionnaire (SAQ) guidance',
     description: 'Complete support for PCI DSS Self-Assessment Questionnaire completion and validation.',
-    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68c004fa1185479cf5041d8a_Frame%202087332585.webp',
+    image: '/Self-Assessment Questionnaire-new.png',
   },
   {
     id: 'aoc',
@@ -56,15 +56,15 @@ const topics = [
     labelColor: 'blue',
     title: 'Attestation of Compliance (AoC) support',
     description: 'Expert assistance in obtaining your PCI DSS Attestation of Compliance documentation.',
-    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1178c977f07e33c64_Frame%202087332587-2.webp',
+    image: '/Attestation of Compliance-new.png',
   },
   {
     id: 'roc',
     label: 'PCI DSS RoC',
     labelColor: 'yellow',
-    title: 'Report on Compliance (RoC) preparation',
-    description: 'Comprehensive support for PCI DSS Report on Compliance preparation and submission.',
-    image: 'https://cdn.prod.website-files.com/6798a9f2afba026ef37a64ed/68b808d1b9c3e2bed38d33eb_Frame%202087332585.webp',
+    title: 'Report on Compliance (RoC) Support',
+    description: 'Comprehensive support for PCI DSS Report on Compliance.',
+    image: '/Report on Compliance-new.png',
   },
 ];
 
@@ -81,7 +81,7 @@ const labelColors = {
  * Sticky Scroll Component
  * Replicates the exact behavior from REPLICA.HTML
  */
-export default function StickyScroll() {
+export default function StickyScroll({ onBookDemo }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const textRefs = useRef([]);
 
@@ -206,15 +206,15 @@ export default function StickyScroll() {
           <p className="text-slate-600 mb-4">
             Ready to secure your cardholder data environment?
           </p>
-          <motion.a
-            href="#contact"
+          <motion.button
+            onClick={onBookDemo}
             className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white gradient-bg rounded-full hover:shadow-xl hover:shadow-indigo-500/25 transition-all"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Talk to Us
+            Contact our team
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
     </section>

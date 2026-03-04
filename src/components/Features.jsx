@@ -86,7 +86,7 @@ const itemVariants = {
   },
 };
 
-export default function Features() {
+export default function Features({ onBookDemo }) {
   return (
     <section id="why-emc" className="py-20 lg:py-32 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,7 +99,7 @@ export default function Features() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 bg-[#26A8E0]/10 text-[#26A8E0] text-sm font-semibold rounded-full mb-4">
-            Why Choose EMC UAE
+            Why Choose EMC
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
             Why Choose EMC for{' '}
@@ -153,15 +153,15 @@ export default function Features() {
           transition={{ delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <motion.a
-            href="#contact"
+          <motion.button
+            onClick={onBookDemo}
             className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white gradient-bg rounded-full hover:shadow-xl hover:shadow-[#26A8E0]/25 transition-all"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Get Started with EMC UAE
+            Get Started with EMC
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
     </section>

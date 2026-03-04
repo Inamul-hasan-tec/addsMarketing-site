@@ -24,7 +24,7 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export default function Header() {
+export default function Header({ onBookDemo }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -79,14 +79,14 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center">
-            <motion.a
-              href="#contact"
+            <motion.button
+              onClick={onBookDemo}
               className="px-5 py-2.5 text-sm font-semibold text-white gradient-bg rounded-full hover:shadow-lg hover:shadow-[#26A8E0]/25 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               Book a Demo
-            </motion.a>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -124,13 +124,15 @@ export default function Header() {
                   </div>
                 ))}
                 <div className="pt-4 px-4">
-                  <a
-                    href="#contact"
+                  <button
+                    onClick={() => {
+                      onBookDemo();
+                      setMobileMenuOpen(false);
+                    }}
                     className="block w-full text-center px-4 py-2.5 text-sm font-semibold text-white gradient-bg rounded-full"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Book a Demo
-                  </a>
+                  </button>
                 </div>
               </div>
             </motion.div>

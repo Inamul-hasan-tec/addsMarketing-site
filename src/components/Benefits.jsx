@@ -69,7 +69,7 @@ const colorClasses = {
   },
 };
 
-export default function Benefits() {
+export default function Benefits({ onBookDemo }) {
   return (
     <section id="benefits" className="py-20 lg:py-32 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,15 +128,15 @@ export default function Benefits() {
           transition={{ delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <motion.a
-            href="#contact"
+          <motion.button
+            onClick={onBookDemo}
             className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white gradient-bg rounded-full hover:shadow-xl hover:shadow-[#26A8E0]/25 transition-all"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Get These Benefits Today
+            Start Your Compliance Journey
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
     </section>

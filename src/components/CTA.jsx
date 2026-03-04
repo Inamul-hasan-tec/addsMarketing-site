@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield } from 'lucide-react';
 
-export default function CTA() {
+export default function CTA({ onBookDemo }) {
   return (
     <section id="contact" className="py-20 lg:py-32 bg-white relative overflow-hidden">
       {/* Background Elements */}
@@ -54,15 +54,15 @@ export default function CTA() {
             </p>
 
             {/* CTA Button */}
-            <motion.a
-              href="#"
-              className="group inline-flex items-center justify-center px-10 py-5 text-lg font-semibold text-[#26A8E0] bg-white rounded-full hover:bg-gray-50 hover:shadow-xl transition-all"
+            <motion.button
+              onClick={onBookDemo}
+              className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white gradient-bg rounded-full hover:shadow-xl hover:shadow-indigo-500/25 transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Book Consultation
-              <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
+              Start Your PCI DSS Journey Here
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
         </motion.div>
       </div>

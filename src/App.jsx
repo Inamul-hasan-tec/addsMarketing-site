@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 // import LogoCarousel from './components/LogoCarousel';
@@ -9,23 +10,29 @@ import Benefits from "./components/Benefits";
 import CTA from "./components/CTA";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
+import BookDemoModal from "./components/BookDemoModal";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header onBookDemo={() => setShowModal(true)} />
       <main>
-        <Hero />
+        <Hero onBookDemo={() => setShowModal(true)} />
         {/* <LogoCarousel /> */}
-        <Features />
-        <StickyScroll />
+        <Features onBookDemo={() => setShowModal(true)} />
+        <StickyScroll onBookDemo={() => setShowModal(true)} />
         <StepsProcess />
-        <Benefits />
+        <Benefits onBookDemo={() => setShowModal(true)} />
         {/* <TestimonialsNew /> */}
-        <CTA />
+        <CTA onBookDemo={() => setShowModal(true)} />
         <FAQ />
       </main>
       <Footer />
+      
+      {/* Book Demo Modal */}
+      <BookDemoModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }
