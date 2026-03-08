@@ -29,6 +29,22 @@ export default function Header({ onBookDemo }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
+  const handleNavClick = (e, href) => {
+    if (!href || !href.startsWith('#')) return;
+    const id = href.slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const headerOffset = isScrolled ? 80 : 80;
+    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -67,9 +83,12 @@ export default function Header({ onBookDemo }) {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={cn(
                   'px-4 py-2 text-sm font-medium rounded-lg transition-colors',
-                  'text-slate-700 hover:text-[#26A8E0] hover:bg-[#26A8E0]/5'
+                  isScrolled
+                    ? 'text-slate-700 hover:text-[#26A8E0] hover:bg-[#26A8E0]/5'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
                 )}
               >
                 {item.label}
@@ -91,13 +110,16 @@ export default function Header({ onBookDemo }) {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+            className={cn(
+              'lg:hidden p-2 rounded-lg transition-colors',
+              isScrolled ? 'hover:bg-slate-100' : 'hover:bg-white/10'
+            )}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-slate-700" />
+              <X className={cn('w-6 h-6', isScrolled ? 'text-slate-700' : 'text-white')} />
             ) : (
-              <Menu className="w-6 h-6 text-slate-700" />
+              <Menu className={cn('w-6 h-6', isScrolled ? 'text-slate-700' : 'text-white')} />
             )}
           </button>
         </div>
@@ -117,7 +139,7 @@ export default function Header({ onBookDemo }) {
                     <a
                       href={item.href}
                       className="block px-4 py-2 text-base font-medium text-slate-700 hover:text-[#26A8E0] hover:bg-[#26A8E0]/5 rounded-lg transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={(e) => handleNavClick(e, item.href)}
                     >
                       {item.label}
                     </a>

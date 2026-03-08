@@ -1,21 +1,31 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Shield, CheckCircle2, Users, Clock, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-
-const countryCodes = [
-  { code: '+971', country: 'UAE', flag: '🇦🇪' },
-  { code: '+1', country: 'USA', flag: '🇺🇸' },
-  { code: '+44', country: 'UK', flag: '🇬🇧' },
-  { code: '+91', country: 'India', flag: '🇮🇳' },
-  { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
-  { code: '+974', country: 'Qatar', flag: '🇶🇦' },
-  { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
-  { code: '+968', country: 'Oman', flag: '🇴🇲' },
-  { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
-];
+import allCountryCodes from '../data/countryCodes.json';
 
 export default function Hero({ onBookDemo }) {
+  const countryCodes = useMemo(() => {
+    const list = Array.isArray(allCountryCodes) ? allCountryCodes : [];
+    const mapped = list
+      .filter((c) => c && c.dial_code)
+      .map((c) => ({
+        code: c.dial_code,
+        country: c.name || c.code,
+        flag: c.emoji || '',
+      }));
+
+    mapped.sort((a, b) => (a.country || '').localeCompare(b.country || ''));
+
+    const idx = mapped.findIndex((c) => c.code === '+971');
+    if (idx > 0) {
+      const [uae] = mapped.splice(idx, 1);
+      mapped.unshift(uae);
+    }
+
+    return mapped;
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -31,9 +41,7 @@ export default function Hero({ onBookDemo }) {
     setIsSubmitting(true);
 
     try {
-      // TODO: Configure EmailJS credentials before enabling
-      // Uncomment and add your credentials from https://www.emailjs.com/
-      /*
+      // Initialize EmailJS with your public key
       emailjs.init('YOUR_PUBLIC_KEY');
 
       const templateParams = {
@@ -42,7 +50,8 @@ export default function Hero({ onBookDemo }) {
         from_email: formData.email,
         phone: `${formData.countryCode} ${formData.phone}`,
         company: formData.companyName,
-        message: `New inquiry from ${formData.fullName} at ${formData.companyName}`,
+        message: `New inquiry from ${formData.fullName} at ${formData.companyName}. Phone: ${formData.countryCode} ${formData.phone}`,
+        subject: 'New PCI DSS Inquiry'
       };
 
       await emailjs.send(
@@ -50,10 +59,8 @@ export default function Hero({ onBookDemo }) {
         'YOUR_TEMPLATE_ID',
         templateParams
       );
-      */
 
-      // Temporary: Just log the form data
-      console.log('Form submitted:', formData);
+      console.log('Email sent successfully!');
 
       setShowSuccess(true);
       setFormData({
@@ -80,20 +87,21 @@ export default function Hero({ onBookDemo }) {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-indigo-50">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#031432] via-[#041a3d] to-[#031432]">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float-delayed" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#26A8E0]/30 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float-delayed" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-40" />
         
         {/* Grid Pattern */}
         <div 
-          className="absolute inset-0 opacity-[0.015]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#031432]/30 to-[#031432]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-32 lg:pb-24">
@@ -110,7 +118,7 @@ export default function Hero({ onBookDemo }) {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-[#26A8E0]/10 rounded-full mb-6"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full mb-6"
             >
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#26A8E0] opacity-75"></span>
@@ -126,7 +134,7 @@ export default function Hero({ onBookDemo }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             >
               <span className="gradient-text">PCI DSS Certification UAE</span>
               {' '}- Fast & Secure
@@ -137,7 +145,7 @@ export default function Hero({ onBookDemo }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0"
+              className="text-lg sm:text-xl text-blue-100/90 mb-8 max-w-xl mx-auto lg:mx-0"
             >
               EMC helps you achieve PCI DSS compliance quickly with expert assessment, 
               gap analysis, and complete end-to-end support.
@@ -170,15 +178,15 @@ export default function Hero({ onBookDemo }) {
             >
               <div className="flex items-center space-x-2">
                 <Shield className="w-5 h-5 text-[#26A8E0]" />
-                <span className="text-sm font-medium text-slate-700">Certified Experts</span>
+                <span className="text-sm font-medium text-blue-100">Certified Experts</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="w-5 h-5 text-[#26A8E0]" />
-                <span className="text-sm font-medium text-slate-700">Fast Certification</span>
+                <span className="text-sm font-medium text-blue-100">Fast Certification</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5 text-[#26A8E0]" />
-                <span className="text-sm font-medium text-slate-700">UAE Focused</span>
+                <span className="text-sm font-medium text-blue-100">UAE Focused</span>
               </div>
             </motion.div>
           </motion.div>
@@ -275,10 +283,10 @@ export default function Hero({ onBookDemo }) {
                       name="countryCode"
                       value={formData.countryCode}
                       onChange={handleChange}
-                      className="px-3 py-3 rounded-xl border border-slate-200 focus:border-[#26A8E0] focus:ring-2 focus:ring-[#26A8E0]/20 transition-all outline-none bg-white"
+                      className="px-3 py-3 rounded-xl border border-slate-200 focus:border-[#26A8E0] focus:ring-2 focus:ring-[#26A8E0]/20 transition-all outline-none bg-white max-h-48 overflow-y-auto"
                     >
                       {countryCodes.map((country) => (
-                        <option key={country.code} value={country.code}>
+                        <option key={`${country.country}-${country.code}`} value={country.code}>
                           {country.flag} {country.code}
                         </option>
                       ))}

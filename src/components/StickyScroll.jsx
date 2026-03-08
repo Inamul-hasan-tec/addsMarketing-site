@@ -40,7 +40,7 @@ const topics = [
     labelColor: 'yellow',
     title: 'Comprehensive readiness assessment and preparation',
     description: 'We ensure your organization is fully prepared for PCI DSS certification with thorough readiness evaluation and support.',
-    image: '/PCI DSS Readiness Support-new.png',
+    image: '/PCI DSS Readiness Support-new-rev1.png',
   },
   {
     id: 'saq-support',

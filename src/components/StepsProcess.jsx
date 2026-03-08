@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Plug, Cpu, FileText, ShieldCheck, Rocket, ArrowRight } from 'lucide-react';
+import { Plug, Cpu, FileText, ShieldCheck } from 'lucide-react';
 
 /**
  * 4-Step Process Section with Scrut.io style
@@ -53,17 +53,19 @@ export default function StepsProcess() {
             <span className="relative inline-block">
               PCI DSS Engagement Model
               <svg
-                className="absolute -bottom-2 left-0 w-full"
-                viewBox="0 0 200 8"
+                className="absolute -bottom-3 left-0 w-full"
+                viewBox="0 0 220 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M2 6C50 2 150 2 198 6"
-                  stroke="#26A8E0"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
+                <path d="M4 10C55 3 165 3 216 10" stroke="#26A8E0" strokeWidth="5" strokeLinecap="round" opacity="0.25" />
+                <path d="M4 10C55 3 165 3 216 10" stroke="url(#titleUnderline)" strokeWidth="3" strokeLinecap="round" />
+                <defs>
+                  <linearGradient id="titleUnderline" x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#26A8E0" />
+                    <stop offset="1" stopColor="#1e3a8a" />
+                  </linearGradient>
+                </defs>
               </svg>
             </span>
           </h2>
@@ -71,124 +73,31 @@ export default function StepsProcess() {
 
         {/* Steps Container */}
         <div className="relative">
-          {/* SVG Curved Connecting Lines - Desktop Only */}
+          {/* SVG Curved Connecting Line - Desktop Only */}
           <svg
-            className="absolute top-32 left-0 w-full h-32 pointer-events-none hidden lg:block"
-            viewBox="0 0 1200 120"
+            className="absolute top-28 left-0 w-full h-40 pointer-events-none hidden lg:block"
+            viewBox="0 0 1200 160"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
           >
-            {/* Curved line connecting all steps */}
             <path
-              d="M80 100 Q 200 100, 280 50 Q 360 0, 450 30 Q 540 60, 620 40 Q 700 20, 780 60 Q 860 100, 950 70 Q 1040 40, 1120 20"
+              d="M80 120 Q 200 120, 280 70 Q 360 20, 450 50 Q 540 80, 620 60 Q 700 40, 780 80 Q 860 120, 950 90 Q 1040 60, 1120 40"
               stroke="url(#curveGradient)"
-              strokeWidth="2"
+              strokeWidth="3"
               fill="none"
               strokeLinecap="round"
-              strokeDasharray="8 4"
+              strokeDasharray="2 10"
+              opacity="0.9"
             />
-            
+
             <defs>
               <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#26A8E0" stopOpacity="0.3" />
-                <stop offset="50%" stopColor="#26A8E0" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#26A8E0" stopOpacity="0.3" />
+                <stop offset="0%" stopColor="#26A8E0" stopOpacity="0.2" />
+                <stop offset="50%" stopColor="#26A8E0" stopOpacity="0.65" />
+                <stop offset="100%" stopColor="#1e3a8a" stopOpacity="0.2" />
               </linearGradient>
             </defs>
-          </svg>
-
-          {/* Animated Arrow */}
-          <svg
-            className="absolute top-20 left-0 w-full h-48 pointer-events-none hidden lg:block"
-            viewBox="0 0 1100 190"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-          >
-            {/* Define the path for the arrow to follow */}
-            <path
-              id="arrowPath"
-              d="M80 60 Q 200 60, 280 30 Q 360 0, 450 15 Q 540 30, 620 15 Q 700 0, 780 30 Q 860 60, 950 45 Q 1040 30, 1120 15"
-              stroke="none"
-              fill="none"
-            />
-            
-            {/* Animated arrow circle */}
-            <motion.circle
-              r="10"
-              fill="url(#arrowGradient)"
-              animate={{
-                pathLength: [0, 1]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "linear",
-                delay: 1
-              }}
-              style={{
-                offsetPath: 'path("M80 60 Q 200 60, 280 30 Q 360 0, 450 15 Q 540 30, 620 15 Q 700 0, 780 30 Q 860 60, 950 45 Q 1040 30, 1120 15")',
-                offsetDistance: "0%"
-              }}
-            >
-              <animateMotion
-                dur="4s"
-                repeatCount="indefinite"
-                begin="1s"
-                path="M80 60 Q 200 60, 280 30 Q 360 0, 450 15 Q 540 30, 620 15 Q 700 0, 780 30 Q 860 60, 950 45 Q 1040 30, 1120 15"
-              />
-              <motion.g
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                transform="translate(-10, -10)"
-              >
-                <motion.circle
-                  r="14"
-                  fill="url(#arrowGradient)"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <Rocket 
-                  x="-7" 
-                  y="-7" 
-                  width="14" 
-                  height="14" 
-                  fill="white"
-                />
-              </motion.g>
-            </motion.circle>
-            
-            <defs>
-              <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#26A8E0" />
-                <stop offset="100%" stopColor="#1e3a8a" />
-              </linearGradient>
-            </defs>
-            
-            {/* Static Arrow at the end */}
-            <g transform="translate(1120, 15)">
-              <circle
-                r="12"
-                fill="url(#arrowGradient)"
-                className="opacity-80"
-              />
-              <ArrowRight 
-                x="-6" 
-                y="-6" 
-                width="12" 
-                height="12" 
-                fill="white"
-              />
-            </g>
           </svg>
 
           {/* Steps Grid */}

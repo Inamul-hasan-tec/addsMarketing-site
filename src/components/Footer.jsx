@@ -16,9 +16,7 @@ const footerLinks = {
     { label: 'Attestation', href: '#' },
   ],
   Company: [
-    { label: 'About EMC', href: '#' },
-    { label: 'Why Choose Us', href: '#' },
-    { label: 'Testimonials', href: '#' },
+    { label: 'Why EMC', href: '#why-emc' },
     { label: 'Contact', href: '#contact' },
   ],
   Legal: [
@@ -35,7 +33,7 @@ const socialLinks = [
   { icon: Youtube, href: 'https://www.linkedin.com/company/eminence-consultancy-emc', label: 'YouTube' },
 ];
 
-export default function Footer() {
+export default function Footer({ onOpenPolicy }) {
   return (
     <footer className="bg-slate-900 text-white">
       {/* Main Footer */}
@@ -95,12 +93,27 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-slate-400 hover:text-white transition-colors text-sm"
-                    >
-                      {link.label}
-                    </a>
+                    {title === 'Legal' ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (!onOpenPolicy) return;
+                          if (link.label === 'Privacy Policy') onOpenPolicy('privacy');
+                          else if (link.label === 'Terms of Service') onOpenPolicy('terms');
+                          else onOpenPolicy('cookie');
+                        }}
+                        className="text-slate-400 hover:text-white transition-colors text-sm"
+                      >
+                        {link.label}
+                      </button>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-slate-400 hover:text-white transition-colors text-sm"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -117,15 +130,27 @@ export default function Footer() {
               © {new Date().getFullYear()} EMC. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <a href="/privacy-policy" className="text-sm text-slate-400 hover:text-white transition-colors">
+              <button
+                type="button"
+                onClick={() => onOpenPolicy && onOpenPolicy('privacy')}
+                className="text-sm text-slate-400 hover:text-white transition-colors"
+              >
                 Privacy Policy
-              </a>
-              <a href="/terms-of-service" className="text-sm text-slate-400 hover:text-white transition-colors">
+              </button>
+              <button
+                type="button"
+                onClick={() => onOpenPolicy && onOpenPolicy('terms')}
+                className="text-sm text-slate-400 hover:text-white transition-colors"
+              >
                 Terms of Service
-              </a>
-              <a href="/cookie-policy" className="text-sm text-slate-400 hover:text-white transition-colors">
+              </button>
+              <button
+                type="button"
+                onClick={() => onOpenPolicy && onOpenPolicy('cookie')}
+                className="text-sm text-slate-400 hover:text-white transition-colors"
+              >
                 Cookie Policy
-              </a>
+              </button>
             </div>
           </div>
         </div>

@@ -1,20 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { X, Shield, CheckCircle2, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-
-const countryCodes = [
-  { code: '+971', country: 'UAE', flag: '🇦🇪' },
-  { code: '+1', country: 'USA', flag: '🇺🇸' },
-  { code: '+44', country: 'UK', flag: '🇬🇧' },
-  { code: '+91', country: 'India', flag: '🇮🇳' },
-  { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
-  { code: '+974', country: 'Qatar', flag: '🇶🇦' },
-  { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
-  { code: '+968', country: 'Oman', flag: '🇴🇲' },
-  { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
-];
+import allCountryCodes from '../data/countryCodes.json';
 
 export default function BookDemoModal({ isOpen, onClose }) {
+  const countryCodes = useMemo(() => {
+    const list = Array.isArray(allCountryCodes) ? allCountryCodes : [];
+    const mapped = list
+      .filter((c) => c && c.dial_code)
+      .map((c) => ({
+        code: c.dial_code,
+        country: c.name || c.code,
+        flag: c.emoji || '',
+      }));
+
+    mapped.sort((a, b) => (a.country || '').localeCompare(b.country || ''));
+
+    const idx = mapped.findIndex((c) => c.code === '+971');
+    if (idx > 0) {
+      const [uae] = mapped.splice(idx, 1);
+      mapped.unshift(uae);
+    }
+
+    return mapped;
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -35,9 +45,7 @@ export default function BookDemoModal({ isOpen, onClose }) {
     setIsSubmitting(true);
 
     try {
-      // TODO: Configure EmailJS credentials before enabling
-      // Uncomment and add your credentials from https://www.emailjs.com/
-      /*
+      // Initialize EmailJS with your public key
       emailjs.init('YOUR_PUBLIC_KEY');
 
       const templateParams = {
@@ -46,7 +54,8 @@ export default function BookDemoModal({ isOpen, onClose }) {
         from_email: formData.email,
         phone: `${formData.countryCode} ${formData.phone}`,
         company: formData.companyName,
-        message: `New demo request from ${formData.fullName} at ${formData.companyName}`,
+        message: `New demo request from ${formData.fullName} at ${formData.companyName}. Phone: ${formData.countryCode} ${formData.phone}`,
+        subject: 'New PCI DSS Demo Request'
       };
 
       await emailjs.send(
@@ -54,11 +63,8 @@ export default function BookDemoModal({ isOpen, onClose }) {
         'YOUR_TEMPLATE_ID',
         templateParams
       );
-      */
 
-      // Temporary: Just log the form data
-      console.log('Form submitted:', formData);
-
+      console.log('Email sent successfully!');
       setShowSuccess(true);
       setFormData({
         fullName: '',
@@ -188,10 +194,10 @@ export default function BookDemoModal({ isOpen, onClose }) {
                         name="countryCode"
                         value={formData.countryCode}
                         onChange={handleChange}
-                        className="px-3 py-3 rounded-xl border border-slate-200 focus:border-[#26A8E0] focus:ring-2 focus:ring-[#26A8E0]/20 transition-all outline-none bg-white"
+                        className="px-3 py-3 rounded-xl border border-slate-200 focus:border-[#26A8E0] focus:ring-2 focus:ring-[#26A8E0]/20 transition-all outline-none bg-white max-h-48 overflow-y-auto"
                       >
                         {countryCodes.map((country) => (
-                          <option key={country.code} value={country.code}>
+                          <option key={`${country.country}-${country.code}`} value={country.code}>
                             {country.flag} {country.code}
                           </option>
                         ))}

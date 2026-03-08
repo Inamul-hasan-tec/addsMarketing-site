@@ -11,13 +11,13 @@ const features = [
   {
     icon: Shield,
     title: 'PCI QSA - Industry Experts',
-    description: 'Our team brings 20+ years of cybersecurity and compliance experience across the UAE and Middle East.',
+    description: 'Our team brings {NUM_1} years of cybersecurity and compliance experience across the UAE and Middle East.',
     color: 'indigo',
   },
   {
     icon: Zap,
     title: 'Structured Path to Certification',
-    description: 'Structured AI enabled methodology designed to help many clients achieve readiness in as fast as 2–4 weeks.',
+    description: 'Structured AI enabled methodology designed to help many clients achieve readiness in as fast as {NUM_2}.',
     color: 'purple',
   },
   {
@@ -87,6 +87,27 @@ const itemVariants = {
 };
 
 export default function Features({ onBookDemo }) {
+  const emphasizeNumerals = (text) => {
+    const parts = String(text).split(/(\{NUM_1\}|\{NUM_2\})/g);
+    return parts.map((part, idx) => {
+      if (part === '{NUM_1}') {
+        return (
+          <span key={idx} className="font-bold text-slate-900">
+            20+ years
+          </span>
+        );
+      }
+      if (part === '{NUM_2}') {
+        return (
+          <span key={idx} className="font-bold text-slate-900">
+            2–4 weeks
+          </span>
+        );
+      }
+      return <span key={idx}>{part}</span>;
+    });
+  };
+
   return (
     <section id="why-emc" className="py-20 lg:py-32 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,12 +155,16 @@ export default function Features({ onBookDemo }) {
                   {feature.title}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
-                  {feature.description}
+                  {emphasizeNumerals(feature.description)}
                 </p>
-                <div className="mt-4 flex items-center text-[#26A8E0] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  type="button"
+                  onClick={onBookDemo}
+                  className="mt-4 flex items-center text-[#26A8E0] font-medium opacity-0 group-hover:opacity-100 transition-opacity"
+                >
                   <span className="text-sm">Learn more</span>
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </div>
+                </button>
               </motion.div>
             );
           })}
